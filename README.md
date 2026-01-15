@@ -34,13 +34,17 @@ The application supports three main tasks:
 
 ## 🗂 Project Structure
 AI_Agent_Project/
+
 │
 ├── ai_agent_project/
+
 │ ├── app.py
 │ ├── templates/
+
 │ │ ├── index.html
 │ │ └── history.html
 │ └── static/
+
 │ └── style.css
 │
 ├── .gitignore
