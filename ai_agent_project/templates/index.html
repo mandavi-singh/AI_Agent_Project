@@ -1,0 +1,49 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>AI Agent - Office Task Automation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Agent – Office Task Automation</h1>
+            <p class="subtitle">Generate summaries, to‑do lists, and email drafts using a simple AI assistant.</p>
+        </header>
+
+        <main>
+            <form method="post" class="card">
+                <label for="task_type">Select task type:</label>
+                <select id="task_type" name="task_type" required>
+                    <option value="">-- Choose --</option>
+                    <option value="summary" {% if selected_task == 'summary' %}selected{% endif %}>Text Summary</option>
+                    <option value="todo" {% if selected_task == 'todo' %}selected{% endif %}>To‑Do List</option>
+                    <option value="email" {% if selected_task == 'email' %}selected{% endif %}>Email Draft</option>
+                </select>
+
+                <label for="input_text">Enter your text / instructions:</label>
+                <textarea id="input_text" name="input_text" rows="8" placeholder="Paste notes, tasks, or instructions here..." required>{{ input_text or "" }}</textarea>
+
+                <button type="submit">Generate</button>
+            </form>
+
+            {% if result %}
+            <section class="card result">
+                <h2>AI Agent Output</h2>
+                <pre>{{ result }}</pre>
+            </section>
+            {% endif %}
+
+            <div class="links">
+                <a href="{{ url_for('history') }}">View Task History</a>
+            </div>
+        </main>
+
+        <footer>
+            <p>Project 4 – AI Agent | Built with Flask (Python)</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>AI Agent – Task History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Task History</h1>
+            <p class="subtitle">Recent tasks processed by the AI Agent.</p>
+        </header>
+
+        <main>
+            <div class="links">
+                <a href="{{ url_for('index') }}">&larr; Back to Home</a>
+            </div>
+
+            {% if tasks %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Type</th>
+                        <th>Input</th>
+                        <th>Output</th>
+                        <th>Created At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in tasks %}
+                    <tr>
+                        <td>{{ task['id'] }}</td>
+                        <td>{{ task['task_type'] }}</td>
+                        <td><pre>{{ task['input_text'] }}</pre></td>
+                        <td><pre>{{ task['output_text'] }}</pre></td>
+                        <td>{{ task['created_at'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No tasks found yet.</p>
+            {% endif %}
+        </main>
+
+        <footer>
+            <p>Project 4 – AI Agent</p>
+        </footer>
+    </div>
+</body>
+</html>
