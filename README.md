@@ -50,6 +50,7 @@ AI_Agent_Project/
 │ └── static/
 
 │ └── style.css
+
 │
 ├── .gitignore
 
